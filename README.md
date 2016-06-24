@@ -57,8 +57,7 @@ do archC. Por conta dessa modificação do problema, não é mais necessário co
 Avaliando as principais funçoes do programa, as funções que são paralelizáveis são:
 * S: S(n) corresponde a soma do número de termos do conjunto o qual possui os pares (a,b) tal que a divide b e b divide n. A função pode ser paralelizável, por conta de que é possivel dividir o intervalo (1, n) pelo número de processadores empregado no nosso programa (no nosso caso, aplicaremos a paralelização empregando 4 processadores mips), e desta maneira, cada processador calcula um subconjunto dos divisores de n. 
 
-
-Em tese, as funções são todas paralelizáveis, ou seja, cada parte pode ser dividida pelo número de cores estabelecidos. Porém como cada bloco necessita que o bloco anterior esteja finalizado por todos os processadores, o ganho dependerá da otimização de cada bloco.
+Não foi paralelizada as outras funções pois elas possuem um segmento linear em relação as demais.
 
 ###Experimentos:
 
