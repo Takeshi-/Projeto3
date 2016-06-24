@@ -66,6 +66,7 @@ De acordo com o ProjectEuler.net, o experimento principal sugerido é o cálculo
 
 Dessa forma, serão realizados três experimentos:
 
-- Um executado sem paralelismo e aceleração      : 
-- Um executado com paralelismo e sem aceleração  : **148975814** instruções.
-- Um executado com paralelismo e com aceleração  : **148948232** instruções.
+- Um executado sem paralelismo e sem aceleração  : **200566381** instruções. (100%)
+- Um executado sem paralelismo e com aceleração  : **200540063** instruções. (99,98%)
+- Um executado com paralelismo e sem aceleração  : **148975814** instruções. (74,28%)
+- Um executado com paralelismo e com aceleração  : **148948232** instruções. (74,26%)
