@@ -6,7 +6,7 @@
 ###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;145574 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; Caio Vinícius Piologo Veras Fernandes
 ###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;148914 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; Pedro Elias Lucas Ramos Meireles
 ###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;150547 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; André Tsuyoshi Sakiyama
-###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;987654 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; Titouan Thibaud
+###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;180879 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; Titouan Thibaud
 
 
 ###Software Usado: Problema do ProjectEuler.net de divisão de pares, adaptado (adaptações descritas em Blocos/Funções a Otimizar):
