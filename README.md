@@ -65,7 +65,7 @@ Não foi paralelizada as outras funções pois elas possuem um segmento linear e
 Tal como foi descrito no roteiro, e dado a seção <probremas enfrentados na implemetação do problema original>, realizamos 
 a execução do programa com a seguinte entrada inicial das funções:
 * Q(2);
-* E(10, i), dentro da função do Q(n);
+* E(37, i), dentro da função do Q(n);
  
 Dessa forma, foram realizadas as seguintes simulações, relembrando que o paralelismo foi realizado com 4 processadores:
 
