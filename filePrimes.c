@@ -18,12 +18,14 @@ int main(){
 	
 	fp = fopen("Primes.txt", "w");
 	if(fp != NULL){
-		for(i = 2; counter < 1000; i++){
+		fprintf(fp,"2 ");
+		for(i = 3; counter < 10000; i++){
 			if(isPrime(i) == 1){
-				fprintf(fp, "%d %d\n",counter,  i);
+				fprintf(fp, ",%d ", i);
 				counter ++;
 			}
 		}
+		fprintf(fp, "\n");
 		fclose(fp);
 	}
 	
