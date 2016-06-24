@@ -67,9 +67,6 @@ a execução do programa com a seguinte entrada inicial das funções:
 * Q(2);
 * E(10, i), dentro da função do Q(n);
  
-
-
-
 Dessa forma, foram realizadas as seguintes simulações, relembrando que o paralelismo foi realizado com 4 processadores:
 
 - Um executado sem paralelismo e sem aceleração  : **200566381** instruções. (100%)
