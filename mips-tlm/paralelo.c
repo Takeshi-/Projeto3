@@ -95,9 +95,8 @@ void S(int n,int *counter)
 	int procNumber;
 	
 	AcquireLocalLock(&lock1);
-	
+	pm_done = 0;
 	procNumber = procCounter;
-	printf("%d\n", procNumber);
 	
 	if(procNumber >= NUMEROCORES){
 		ReleaseLocalLock(&lock1);
@@ -125,6 +124,7 @@ void S(int n,int *counter)
 		AcquireLocalLock(&lock1);
 		procCounter = 0;
 		done_S = 0;
+		total_S_aux = 0;
 		ReleaseLocalLock(&lock1);
 		pm_done = 1;
 	} else{
@@ -135,7 +135,7 @@ void S(int n,int *counter)
 /* E(m,n): Calculates the highest k, that 2^k is divisor of the number 
  * (S(Pm(m)^n)) */
 void E(int m, int n, int  *result){
-	int aux, answer, divisor,help;
+	int aux, answer, divisor,help,i;
 	AcquireLocalLock(&lock1);
 	if(expo_count == -1){
 		done_E = 0;
@@ -144,6 +144,10 @@ void E(int m, int n, int  *result){
 	ReleaseLocalLock(&lock1);
 	
 	S(expo_count,&help);
+	
+	
+	for (i=0;i<10000;i++);
+	
 	expo_count = -1;
 	AcquireLocalLock(&lock1);
 	if(done_E == 0){
@@ -167,19 +171,12 @@ int Q(int n){
 		
 		aux += sum;
 	}
-//	if (dekkoh == NUMEROCORES)
-//		printf("%d\n", sum);
 	return aux;	
 }
 	
 /* Main(): Used to verify the functions */
 int main(){
 	int n, answer;
-	n = 28;
-//	S(n, &answer);
-	//printf("%d\n", isPrime(3));
-	//printf("%d\n", Pm(25)*Pm(25));
-	//printf("%d\n", expo(9, 5));
 	answer = Q(2);
 	AcquireLocalLock(&lock3);
 		printf("%d\n", answer);
