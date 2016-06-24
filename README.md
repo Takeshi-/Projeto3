@@ -45,14 +45,17 @@ Para tentar mudar essa condição, tentamos gerar as seguintes mudanças no prog
 ###Ganho de desempenho:
 
 O ganho de desempenho ocorre através de duas maneiras:
-1. Acelerador:
+
+####1.Acelerador:
 
 O acelerador implementado é um registro dos primeiros 10000 números primos que estão armazenados em um vetor no periferico do simulador 
 do archC. Por conta dessa modificação do problema, não é mais necessário computar se um número é primo ou não o tempo todo, e o programa
 é executado mais rapidamente através dessa mudança. 
 
-2. Paralelismo:
+####2.Paralelismo:
 
+Avaliando as principais funçoes do programa, as funções que são paralelizáveis são:
+* S: S(n) corresponde a soma do número de termos do conjunto o qual possui os pares (a,b) tal que a divide b e b divide n. A função pode ser paralelizável, por conta de que é possivel dividir o intervalo (1, n) pelo número de processadores empregado no nosso programa (no nosso caso, aplicaremos a paralelização empregando 4 processadores mips), e desta maneira, cada processador calcula um subconjunto dos divisores de n. 
 
 
 Em tese, as funções são todas paralelizáveis, ou seja, cada parte pode ser dividida pelo número de cores estabelecidos. Porém como cada bloco necessita que o bloco anterior esteja finalizado por todos os processadores, o ganho dependerá da otimização de cada bloco.
