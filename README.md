@@ -28,7 +28,7 @@ Dado o enunciado original descrito no link acima, percebe-se que foram feitas mu
 e 4 (Não se calcula o Q(n) empregando o primeiro valor de E(m,n) para m = 904961.)
 Os problemas se devem ao fato de que:
 
-1. O produtório dos primeiros 15 primos bastam para estourar o valor do inteiro;  
+*O produtório dos primeiros 15 primos bastam para estourar o valor do inteiro.*
 
 Para tentar mudar essa condição, tentamos gerar as seguintes mudanças no programa, sem exito:
 *Decompor os números primos em seus fatores, e dado um número fatorado, encontrar um padrão para definir
