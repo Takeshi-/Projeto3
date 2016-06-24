@@ -31,28 +31,29 @@ Os problemas se devem ao fato de que:
 *O produtório dos primeiros 15 primos bastam para estourar o valor do inteiro.*
 
 Para tentar mudar essa condição, tentamos gerar as seguintes mudanças no programa, sem exito:
-*Decompor os números primos em seus fatores, e dado um número fatorado, encontrar um padrão para definir
- o número de pares de divisores de S(n). Desta maneira, seria possivel trabalhar com números que extrapolam os limites numéricos de um 
+
+* **Decompor os números primos em seus fatores, e dado um número fatorado, encontrar um padrão para definir
+ o número de pares de divisores de S(n)**. Desta maneira, seria possivel trabalhar com números que extrapolam os limites numéricos de um 
  inteiro, sem necessariamente computar o produtório dos n primeiros primos. No entanto, não conseguimos determinar, nem localizar,
  um padrão matemático para gerar essa implementação, e abonamos a ideia.
  
  Por conta disso, achamos pertinente reformular o problema para ao invés de calcular o produtório dos n primeiros primos, substituir a 
  formula para o somatório dos n primeiros primos.
  
- Usar um double ao inves de um inteiro também causa a extrapolação dos produtorios, o que faz com que não insistissemos na ideia. 
+ Usar um double ao invés de um inteiro também causa a extrapolação dos produtorios, o que faz com que não insistissemos na ideia. 
  
 
 ###Ganho de desempenho:
 
 O ganho de desempenho ocorre através de duas maneiras:
 
-####1.Acelerador:
+####1. Acelerador:
 
-O acelerador implementado é um registro dos primeiros 10000 números primos que estão armazenados em um vetor no periferico do simulador 
+O acelerador implementado é um registro dos primeiros 10000 números primos que estão armazenados em um vetor no periférico do simulador 
 do archC. Por conta dessa modificação do problema, não é mais necessário computar se um número é primo ou não o tempo todo, e o programa
 é executado mais rapidamente através dessa mudança. 
 
-####2.Paralelismo:
+####2. Paralelismo:
 
 Avaliando as principais funçoes do programa, as funções que são paralelizáveis são:
 * S: S(n) corresponde a soma do número de termos do conjunto o qual possui os pares (a,b) tal que a divide b e b divide n. A função pode ser paralelizável, por conta de que é possivel dividir o intervalo (1, n) pelo número de processadores empregado no nosso programa (no nosso caso, aplicaremos a paralelização empregando 4 processadores mips), e desta maneira, cada processador calcula um subconjunto dos divisores de n. 
@@ -68,7 +69,3 @@ Dessa forma, serão realizados três experimentos:
 - Um executado sem paralelismo e aceleração
 - Um executado com paralelismo e sem aceleração
 - Um executado com paralelismo e com aceleração
-
-###Aceleração:
-
-Iremos acelerar o cálculo dos m primeiros primos ao calcular uma tabela previamente em hardware.
