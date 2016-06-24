@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#define M 3
-#define N 3
+#define M 2
+#define N 2
 
 int isPrime(int n){
 	int i, answer;
@@ -36,14 +36,28 @@ int sum(int n){
 	return counter;
 }
 
+int factorial(int f) {
+	if ( f == 0 ) 
+        return 1;
+    return(f * factorial(f - 1));
+}
+
 int S(int vet[]){
 	int i, j = N,count = 0;
-	for(i=1;i<M;i++){
-		count+=(j*N*(M-i)-1);
-		j--;
-		if (j==0)
-			j=N;
+	for(i=1;i<=N;i++){
+		/*for ( j= i; j <= N;j++){
+			count += j*N*(M-1)+pow(N,M-1);
+		}*/
+		//for(j = i; j <= N; j++){
+			count += i * pow(N+1, M-1);
+			//count += i * pow(N+1+(pow(N+1, M-1)/M-1), M-1);
+			printf("%d\n", count);
+		//}
+		
 	}
+	count *= (M);
+	count += pow(N, M);
+	//count -= ();
 	return count;
 }
 
