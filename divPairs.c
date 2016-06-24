@@ -89,7 +89,7 @@ int Q(int n){
 	sum = 0;
 	
 	for(i = 1; i <= n; i++){
-		sum += E(5, i);
+		sum += E(37, i);
 		printf("%d-%d\n",i,sum);
 	}
 	
@@ -106,7 +106,7 @@ int main(){
 	//printf("%d\n", Pm(25)*Pm(25));
 	//printf("%d\n", expo(9, 5));
 	//printf("%d\n", E(2,1));
-	printf("%d\n", Q(5));
+	printf("%d\n", Q(2));
 	//Ele buga aqui, por ter que calcular numeros enormes de produto de primos.
 	return 0;
 }

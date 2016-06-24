@@ -39,9 +39,9 @@ int sc_main(int ac, char *av[])
   char **av_aux;
   //!  ISA simulator
   mips mips_proc1("mips");
-  mips mips_proc2("mips2");
-  mips mips_proc3("mips3");
-  mips mips_proc4("mips4");
+  //mips mips_proc2("mips2");
+  //mips mips_proc3("mips3");
+  //mips mips_proc4("mips4");
   ac_tlm_mem mem("mem", 100*1024*1024);
   ac_tlm_router router("router");
   ac_tlm_peripheral peripheral("peripheral"); 
@@ -52,9 +52,9 @@ int sc_main(int ac, char *av[])
   router.PERIPHERAL_port(peripheral.target_export); 
 
   mips_proc1.DM_port(router.target_export);
-  mips_proc2.DM_port(router.target_export);
-  mips_proc3.DM_port(router.target_export);
-  mips_proc4.DM_port(router.target_export);
+  //mips_proc2.DM_port(router.target_export);
+  //mips_proc3.DM_port(router.target_export);
+  //mips_proc4.DM_port(router.target_export);
 
 #ifdef AC_DEBUG
   ac_trace("mips_proc1.trace");
@@ -71,7 +71,7 @@ int sc_main(int ac, char *av[])
   
   mips_proc1.init(ac, av);
   
-  ac = ac_aux;
+  /*ac = ac_aux;
   for (int i=0;i<ac;i++)
 	strcpy(av[i] ,av_aux[i]);
   
@@ -87,21 +87,21 @@ int sc_main(int ac, char *av[])
   for (int i=0;i<ac;i++)
 	strcpy(av[i] ,av_aux[i]);
   
-  mips_proc4.init(ac, av);
+  mips_proc4.init(ac, av);*/
   
   mips_proc1.set_instr_batch_size(1);
-  mips_proc2.set_instr_batch_size(1);
-  mips_proc3.set_instr_batch_size(1);
-  mips_proc4.set_instr_batch_size(1);
+  //mips_proc2.set_instr_batch_size(1);
+  //mips_proc3.set_instr_batch_size(1);
+  //mips_proc4.set_instr_batch_size(1);
   
   cerr << endl;
 
   sc_start();
 
   mips_proc1.PrintStat();
-  mips_proc2.PrintStat();
-  mips_proc3.PrintStat();
-  mips_proc4.PrintStat();
+  //mips_proc2.PrintStat();
+  //mips_proc3.PrintStat();
+  //mips_proc4.PrintStat();
   cerr << endl;
 
 #ifdef AC_STATS
@@ -112,5 +112,5 @@ int sc_main(int ac, char *av[])
   ac_close_trace();
 #endif 
 
-  return mips_proc1.ac_exit_status + mips_proc2.ac_exit_status + mips_proc3.ac_exit_status + mips_proc4.ac_exit_status;
+  return mips_proc1.ac_exit_status;// + mips_proc2.ac_exit_status + mips_proc3.ac_exit_status + mips_proc4.ac_exit_status;
 }

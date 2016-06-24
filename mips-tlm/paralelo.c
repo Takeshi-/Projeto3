@@ -11,13 +11,10 @@ volatile int lock2 = 0;
 volatile int lock3 = 0;
 
 volatile int expo_count = -1;
-volatile int totalSum_Pm = 0;
 volatile int total_S_aux = 0;
 volatile int done_S = 0;
-volatile int done_Pm = 0;
 volatile int done_E = 0;
 volatile int pm_done = 0;
-volatile int dekkoh = 0;
 
 void AcquireGlobalLock(){ while(*gLock){}}
 void ReleaseGlobalLock(){*gLock = 0;}
@@ -97,6 +94,7 @@ void S(int n,int *counter)
 	AcquireLocalLock(&lock1);
 	pm_done = 0;
 	procNumber = procCounter;
+	printf("%d\n", procNumber);
 	
 	if(procNumber >= NUMEROCORES){
 		ReleaseLocalLock(&lock1);
@@ -125,8 +123,8 @@ void S(int n,int *counter)
 		procCounter = 0;
 		done_S = 0;
 		total_S_aux = 0;
-		ReleaseLocalLock(&lock1);
 		pm_done = 1;
+		ReleaseLocalLock(&lock1);
 	} else{
 		while(pm_done == 0);
 	}
@@ -148,12 +146,13 @@ void E(int m, int n, int  *result){
 	
 	for (i=0;i<10000;i++);
 	
-	expo_count = -1;
+	
 	AcquireLocalLock(&lock1);
 	if(done_E == 0){
 		done_E = 1;
 		divisor = 2;
 		answer = 0;
+		expo_count = -1;
 		while(help%divisor == 0){
 			answer++;
 			divisor = divisor*2;
@@ -167,7 +166,7 @@ int Q(int n){
 	int i, sum,aux = 0;
 	
 	for(i = 1;i <= n; i ++){
-		E(18, i, &sum);
+		E(37, i, &sum);
 		
 		aux += sum;
 	}
@@ -180,9 +179,9 @@ int main(){
 	answer = Q(2);
 	AcquireLocalLock(&lock3);
 		printf("%d\n", answer);
-		for(n = 0; n < 1; n++){}
+		//for(n = 0; n < 1; n++){}
 	ReleaseLocalLock(&lock3);
-	//Q(5);
+	
 	//Ele buga aqui, por ter que calcular numeros enormes de produto de primos.
 	return 0;
 }
