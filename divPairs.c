@@ -38,7 +38,7 @@ int Pm(int n){
 	k = 2;
 	while(j > 0){
 		if(isPrime(k)){
-			counter = counter * k;
+			counter = counter + k;
 			j --;
 		}
 		k++;
