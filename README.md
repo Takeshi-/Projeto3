@@ -69,7 +69,7 @@ a execução do programa com a seguinte entrada inicial das funções:
  
 Dessa forma, foram realizadas as seguintes simulações, relembrando que o paralelismo foi realizado com 4 processadores:
 
-- Um executado sem paralelismo e sem aceleração  : **200566381** instruções. (100%)
-- Um executado sem paralelismo e com aceleração  : **200540063** instruções. (99,98%)
-- Um executado com paralelismo e sem aceleração  : **148975814** instruções. (74,28%)
-- Um executado com paralelismo e com aceleração  : **148948232** instruções. (74,26%)
+- Um executado sem paralelismo e sem aceleração  : **200566381** instruções. (100%) divPairs.c 
+- Um executado sem paralelismo e com aceleração  : **200540063** instruções. (99,98%) teste.c
+- Um executado com paralelismo e sem aceleração  : **148975814** instruções. (74,28%) paralelo.c
+- Um executado com paralelismo e com aceleração  : **148948232** instruções. (74,26%) acelpara.c
