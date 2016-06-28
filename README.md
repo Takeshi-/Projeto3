@@ -51,7 +51,7 @@ O ganho de desempenho ocorre através de duas maneiras:
 
 O acelerador implementado é um registro dos primeiros 10000 números primos que estão armazenados em um vetor no periférico do simulador 
 do archC. Por conta dessa modificação do problema, não é mais necessário computar se um número é primo ou não o tempo todo, e o programa
-é executado mais rapidamente através dessa mudança. 
+é executado mais rapidamente através dessa mudança (foi calculado com o arquivo filePrimos.c). 
 
 ####2. Paralelismo:
 
