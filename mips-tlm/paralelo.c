@@ -9,11 +9,10 @@ volatile int* gLock = (int *)(100*1024*1024);
 volatile int lock1 = 0;
 volatile int lock2 = 0;
 volatile int lock3 = 0;
+volatile int lock4 = 0;
 
-volatile int expo_count = -1;
 volatile int total_S_aux = 0;
 volatile int done_S = 0;
-volatile int done_E = 0;
 volatile int pm_done = 0;
 
 void AcquireGlobalLock(){ while(*gLock){}}
@@ -70,11 +69,12 @@ int isPrime(int n){
 
 /* Pm: Calculates the sum of the first n prime numbers. */
 int Pm(int n){
-	int counter, j, k;
+	int counter, j, k,i;
 	j = n;
 	counter = 0;
 	k = 2;
-	while(j > 0){
+	
+	*while(j > 0){
 		if(isPrime(k)){
 			counter += k;
 			j --;
@@ -94,9 +94,8 @@ void S(int n,int *counter)
 	AcquireLocalLock(&lock1);
 	pm_done = 0;
 	procNumber = procCounter;
-	printf("%d\n", procNumber);
 	
-	if(procNumber >= NUMEROCORES){
+	if(procNumber > NUMEROCORES){
 		ReleaseLocalLock(&lock1);
 		return;
 	}
@@ -134,32 +133,17 @@ void S(int n,int *counter)
  * (S(Pm(m)^n)) */
 void E(int m, int n, int  *result){
 	int aux, answer, divisor,help,i;
-	AcquireLocalLock(&lock1);
-	if(expo_count == -1){
-		done_E = 0;
-		expo_count = expo(Pm(m), n);
-	}
-	ReleaseLocalLock(&lock1);
-	
+	int	expo_count = expo(Pm(m), n);
 	S(expo_count,&help);
 	
-	
-	for (i=0;i<10000;i++);
-	
-	
-	AcquireLocalLock(&lock1);
-	if(done_E == 0){
-		done_E = 1;
-		divisor = 2;
-		answer = 0;
-		expo_count = -1;
-		while(help%divisor == 0){
-			answer++;
-			divisor = divisor*2;
-		}
-		*result = answer;
+	divisor = 2;
+	answer = 0;
+	while(help%divisor == 0){
+		answer++;
+		divisor = divisor*2;
 	}
-	ReleaseLocalLock(&lock1);
+	*result = answer;
+	
 }
 /* Q(n): Weirdo function described in the end of the enunciate. */
 int Q(int n){
