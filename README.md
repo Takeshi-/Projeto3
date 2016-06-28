@@ -18,9 +18,9 @@
 O problema se divide em 4 funções principais.
 
 1. Calcular todos os divisores de n, e dividí-los em pares (a,b) tal que a divide b e retorna o tamanho do conjunto S(n).
-2. Calcular o **somatório** dos m primeiros primos pm.
+2. Calcular o **somatório** dos m primeiros primos Pm.
 3. Calcular o maior inteiro E(m,n) = k tal que 2^k divide S(pm^n).
-4. Calcular o somatório de E(m,i) de 1 até n, através da função Q(n), **sendo m = XX.**
+4. Calcular o somatório de E(m,i) sendo i de 1 até n, através da função Q(n), **sendo m = 37.**
 
 ###Problemas enfrentados na implementação do problema original:
 
@@ -35,7 +35,7 @@ Para tentar mudar essa condição, tentamos gerar as seguintes mudanças no prog
 * **Decompor os números primos em seus fatores, e dado um número fatorado, encontrar um padrão para definir
  o número de pares de divisores de S(n)**. Desta maneira, seria possivel trabalhar com números que extrapolam os limites numéricos de um 
  inteiro, sem necessariamente computar o produtório dos n primeiros primos. No entanto, não conseguimos determinar, nem localizar,
- um padrão matemático para gerar essa implementação, e abonamos a ideia.
+ um padrão matemático para gerar essa implementação, e abandonamos a ideia.
  
  Por conta disso, achamos pertinente reformular o problema para ao invés de calcular o produtório dos n primeiros primos, substituir a 
  formula para o somatório dos n primeiros primos.
@@ -55,7 +55,7 @@ do archC. Por conta dessa modificação do problema, não é mais necessário co
 
 ####2. Paralelismo:
 
-Avaliando as principais funçoes do programa, as funções que são paralelizáveis são:
+Avaliando as principais funçoes do programa, a única função que é paralelizável é:
 * S: S(n) corresponde a soma do número de termos do conjunto o qual possui os pares (a,b) tal que a divide b e b divide n. A função pode ser paralelizável, por conta de que é possivel dividir o intervalo (1, n) pelo número de processadores empregado no nosso programa (no nosso caso, aplicaremos a paralelização empregando 4 processadores mips), e desta maneira, cada processador calcula um subconjunto dos divisores de n. 
 
 Não foi paralelizada as outras funções pois elas possuem um segmento linear em relação as demais.
