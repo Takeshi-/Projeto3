@@ -1,19 +1,19 @@
 # Projeto 3: Multicore e aceleração em Hardware.
 
-##Membros do grupo:
-###RA: &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; Alunos:
-###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;145539 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; Bruno Takeshi Hori
-###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;145574 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; Caio Vinícius Piologo Veras Fernandes
-###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;148914 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; Pedro Elias Lucas Ramos Meireles
-###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;150547 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; André Tsuyoshi Sakiyama
-###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;180879 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; Titouan Thibaud
+## Membros do grupo:
+### RA: &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; Alunos:
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;145539 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; Bruno Takeshi Hori
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;145574 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; Caio Vinícius Piologo Veras Fernandes
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;148914 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; Pedro Elias Lucas Ramos Meireles
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;150547 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; André Tsuyoshi Sakiyama
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;180879 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; Titouan Thibaud
 
 
-###Software Usado: Problema do ProjectEuler.net de divisão de pares, adaptado (adaptações descritas em Blocos/Funções a Otimizar):
+### Software Usado: Problema do ProjectEuler.net de divisão de pares, adaptado (adaptações descritas em Blocos/Funções a Otimizar):
 
  [**Divisor Pairs**] (https://projecteuler.net/problem=561)
 
-###Blocos/Funções a otimizar:
+### Blocos/Funções a otimizar:
 
 O problema se divide em 4 funções principais.
 
@@ -22,7 +22,7 @@ O problema se divide em 4 funções principais.
 3. Calcular o maior inteiro E(m,n) = k tal que 2^k divide S(pm^n).
 4. Calcular o somatório de E(m,i) sendo i de 1 até n, através da função Q(n), **sendo m = 37.**
 
-###Problemas enfrentados na implementação do problema original:
+### Problemas enfrentados na implementação do problema original:
 
 Dado o enunciado original descrito no link acima, percebe-se que foram feitas mudanças no bloco 2 (de um produtório, foi adaptado a um somatorio)
 e 4 (Não se calcula o Q(n) empregando o primeiro valor de E(m,n) para m = 904961.)
@@ -43,24 +43,24 @@ Para tentar mudar essa condição, tentamos gerar as seguintes mudanças no prog
  Usar um double ao invés de um inteiro também causa a extrapolação dos produtorios, o que faz com que não insistissemos na ideia. 
  
 
-###Ganho de desempenho:
+### Ganho de desempenho:
 
 O ganho de desempenho ocorre através de duas maneiras:
 
-####1. Acelerador:
+#### 1. Acelerador:
 
 O acelerador implementado é um registro dos primeiros 10000 números primos que estão armazenados em um vetor no periférico do simulador 
 do archC. Por conta dessa modificação do problema, não é mais necessário computar se um número é primo ou não o tempo todo, e o programa
 é executado mais rapidamente através dessa mudança (foi calculado com o arquivo filePrimos.c). 
 
-####2. Paralelismo:
+#### 2. Paralelismo:
 
 Avaliando as principais funçoes do programa, a única função que é paralelizável é:
 * S: S(n) corresponde a soma do número de termos do conjunto o qual possui os pares (a,b) tal que a divide b e b divide n. A função pode ser paralelizável, por conta de que é possivel dividir o intervalo (1, n) pelo número de processadores empregado no nosso programa (no nosso caso, aplicaremos a paralelização empregando 4 processadores mips), e desta maneira, cada processador calcula um subconjunto dos divisores de n. 
 
 Não foi paralelizada as outras funções pois elas possuem um segmento linear em relação as demais.
 
-###Experimentos:
+### Experimentos:
 
 Tal como foi descrito no roteiro, e dado a seção <probremas enfrentados na implemetação do problema original>, realizamos 
 a execução do programa com a seguinte entrada inicial das funções:
